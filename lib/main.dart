@@ -27,6 +27,22 @@ class TodoListState extends State<TodoList> {
     });
   }
 
+  Widget buildTodoList() {
+    return new ListView.builder(
+      itemBuilder: (context, index) {
+        if(index < todoItems.length) {
+          return buildTodoItem(todoItems[index]);
+        }
+      },
+    );
+  }
+
+  Widget buildTodoItem(String todoText) {
+    return new ListTile(
+        title: new Text(todoText)
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
