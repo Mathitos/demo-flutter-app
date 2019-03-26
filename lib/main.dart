@@ -27,6 +27,30 @@ class TodoListState extends State<TodoList> {
     setState(() => todoItems.removeAt(index));
   }
 
+  void deleteConfirmationDialog(int index) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return new AlertDialog(
+              title: new Text('Delete "${todoItems[index]}"?'),
+              actions: <Widget>[
+                new FlatButton(
+                    child: new Text('CANCEL'),
+                    onPressed: () => Navigator.of(context).pop()
+                ),
+                new FlatButton(
+                    child: new Text('DELETE'),
+                    onPressed: () {
+                      removeItem(index);
+                      Navigator.of(context).pop();
+                    }
+                )
+              ]
+          );
+        }
+    );
+  }
+
   Widget buildTodoList() {
     return new ListView.builder(
       itemBuilder: (context, index) {
