@@ -18,6 +18,15 @@ class TodoList extends StatefulWidget {
 }
 
 class TodoListState extends State<TodoList> {
+  List<String> todoItems = [];
+
+  void addItem() {
+    setState(() {
+      int index = todoItems.length;
+      todoItems.add('Item ' + index.toString());
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
