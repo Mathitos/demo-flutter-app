@@ -18,7 +18,7 @@ class TodoList extends StatefulWidget {
 }
 
 class TodoListState extends State<TodoList> {
-  List<String> todoItems = [];
+  List<String> todoItems = ["oi", "como", "vai", "você"];
 
   void addItem() {
     setState(() {
@@ -48,7 +48,8 @@ class TodoListState extends State<TodoList> {
     return new Scaffold(
         appBar: new AppBar(
             title: new Text('Todo List')
-        )
+        ),
+        body: buildTodoList(),
     );
   }
 }
