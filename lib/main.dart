@@ -23,6 +23,10 @@ class TodoListState extends State<TodoList> {
     });
   }
 
+  void removeItem(int index) {
+    setState(() => todoItems.removeAt(index));
+  }
+
   Widget buildTodoList() {
     return new ListView.builder(
       itemBuilder: (context, index) {
