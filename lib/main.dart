@@ -5,10 +5,7 @@ void main() => runApp(ToDoListApp());
 class ToDoListApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-              title: 'Todo List',
-              home: new TodoList()
-          );
+    return new MaterialApp(title: 'Todo List', home: new TodoList());
   }
 }
 
@@ -18,7 +15,7 @@ class TodoList extends StatefulWidget {
 }
 
 class TodoListState extends State<TodoList> {
-  List<String> todoItems = ["oi", "como", "vai", "você"];
+  List<String> todoItems = [];
 
   void addItem() {
     setState(() {
@@ -30,7 +27,7 @@ class TodoListState extends State<TodoList> {
   Widget buildTodoList() {
     return new ListView.builder(
       itemBuilder: (context, index) {
-        if(index < todoItems.length) {
+        if (index < todoItems.length) {
           return buildTodoItem(todoItems[index]);
         }
       },
@@ -38,18 +35,16 @@ class TodoListState extends State<TodoList> {
   }
 
   Widget buildTodoItem(String todoText) {
-    return new ListTile(
-        title: new Text(todoText)
-    );
+    return new ListTile(title: new Text(todoText));
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-            title: new Text('Todo List')
-        ),
-        body: buildTodoList(),
+      appBar: new AppBar(title: new Text('Todo List')),
+      body: buildTodoList(),
+      floatingActionButton: new FloatingActionButton(
+          onPressed: addItem, tooltip: 'Add task', child: new Icon(Icons.add)),
     );
   }
 }
